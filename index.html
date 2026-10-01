@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Assignment Workflow</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+        .instruction {
+            margin-bottom: 7px;
+            cursor: pointer;
+        }
+        .blue-underlined {
+            color: blue;
+            text-decoration: underline;
+        }
+        .red-warning {
+            color: red;
+            font-weight: bold;
+        }
+        .red-warning-link {
+            color: red;
+            text-decoration: underline;
+        }
+        .green-note {
+            color: green;
+        }
+        .next-step {
+            color: #888;
+            font-size: 15px;
+            font-style: italic;
+        }
+        .highlighted {
+            background-color: #f7f79a;
+        }
+        .fixed-container {
+            position: fixed;
+            right: 1px;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .fixed-container img {
+            max-width: 45vw;
+            max-height: 90vh;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Photo Assignment <small>(<a href="https://seanard1.github.io/blox/">Spec</a> || <a href="https://seanard1.github.io/blox-edit/">Editing</a> || <a href="https://seanard1.github.io/blox-slot/">Slotting</a>)</small></h1>
+            <p>To request photos for a story:</p>
+            <ol>
+                <li class="instruction">Open the <span class="blue-underlined instruction" onclick="showImage('01a-hamburger.png', this)">"hamburger" menu</span> (top left) and choose <span class="blue-underlined instruction" onclick="showImage('01b-assignments.png', this)">Assignments</span>.</li>
+
+                <li class="instruction" onclick="showImage('02-create.png', this)">Click <span class="blue-underlined">+ Create assignment</span>.</li>
+
+                <li>General info
+                    <ul>
+                        <li class="instruction" onclick="showImage('03a-type.png', this)">Set <span class="blue-underlined">Assignment type</span> to Media.</li>
+                        <li class="instruction" onclick="showImage('03-information.png', this)">Fill in a <span class="blue-underlined"><b>descriptive</b> title and <b>detailed</b> description</span>. <span class="red-warning">This is your only spot to include notes for the photographer, such as specific requests or framing.</span> <span class="green-note">Requests for video go here too.</span></li>
+                        <li class="instruction" onclick="showImage('03c-slug-is-name.png', this)">For <span class="blue-underlined">Slug</span>, put your full name (so we know who asked for photo). <span class="red-warning">This is how we know who asked.</span></li>
+                    </ul>
+                    <span class="next-step">Click Next.</span>
+                </li>
+
+                <li>Workflow and user info
+                    <ul>
+                        <li class="instruction" onclick="showImage('04a-assign.png', this)">Click the <span class="blue-underlined">magnifying glass</span> beside Assigned users.</li>
+                        <li class="instruction" onclick="showImage('04a-assign-to-sean.png', this)"><span class="blue-underlined">Search by name</span> and pick Sean-Allen2. <span class="red-warning">That's not an example: Pick Sean for all of them, and make sure it's his @torstar.ca account.</span></li>
+                        <li class="instruction" onclick="showImage('04a-optionals.png', this)"><span class="blue-underlined">Due date and number of assets</span> <span class="green-note">are optional, but helpful.</span></li>
+                    </ul>
+                    <span class="next-step">Click Next.</span>
+                </li>
+
+                <li class="instruction" onclick="showImage('05-not-for-photos.png', this)"><span class="blue-underlined">Publication info</span>: <span class="red-warning">Skip it. Not used for photos.</span> <span class="next-step">Click Next.</span></li>
+
+                <li class="instruction" onclick="showImage('06-venue.png', this)"><span class="blue-underlined">Venue</span>: Address, city, and start and end time of the event. This is very helpful for the photographer. <span class="next-step">Click Next.</span></li>
+
+                <li class="instruction" onclick="showImage('07-contact.png', this)"><span class="blue-underlined">Contact</span>: Name, email and cell for the person the photographer is meeting. <span class="next-step">Click Next.</span></li>
+
+                <li>Sections (this should be familiar from story assets)
+                    <ul>
+                        <li class="instruction" onclick="showImage('08a-sections.png', this)">Click <span class="blue-underlined">Set sections</span>.</li>
+                        <li class="instruction" onclick="showImage('08a2-sections.png', this)">Click the <span class="blue-underlined">+ beside publications</span> to open the list. <span class="red-warning">Easy to miss.</span></li>
+                        <li class="instruction" onclick="showImage('08b-publications.png', this)">Check <span class="blue-underlined">hamilton_spectator</span>, then Add sections.</li>
+                        <li class="instruction" onclick="showImage('08c-spectator.png', this)">Confirm <span class="blue-underlined">publications/hamilton_spectator</span> is listed, then click Create assignment.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-6">
+            <div class="image-container fixed-container" id="image-box">
+                <img id="displayed-image" src="" alt="Step screenshot">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showImage(imagePath, el) {
+            if (window.event) window.event.stopPropagation();
+            document.getElementById('displayed-image').src = imagePath;
+            document.getElementById('image-box').style.display = 'block';
+            document.querySelectorAll('.instruction').forEach(function (item) {
+                item.classList.remove('highlighted');
+            });
+            el.classList.add('highlighted');
+        }
+    </script>
+
+</body>
+</html>
