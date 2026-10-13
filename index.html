@@ -79,14 +79,15 @@
                     <ul>
                         <li class="instruction" onclick="showImage('04a-assign.png', this)">Click the <span class="blue-underlined">magnifying glass</span> beside Assigned users.</li>
                         <li class="instruction" onclick="showImage('04a-assign-to-sean.png', this)"><span class="blue-underlined">Search by name</span> and pick Sean-Allen2. <span class="red-warning">That's not an example: Pick Sean for all of them, and make sure it's his @torstar.ca account.</span></li>
-                        <li class="instruction" onclick="showImage('04a-optionals.png', this)"><span class="blue-underlined">Due date and number of assets (how many photos you want)</span> <span class="green-note">are optional, but helpful.</span></li>
+                        <li class="instruction" onclick="showImage('04a-optionals.png', this)"><span class="blue-underlined">Due date</span>: <span class="red-warning">Required.</span> This tells the photographer whether to file right away or whether it can wait.</li>
+                        <li class="instruction" onclick="showImage('04a-optionals.png', this)"><span class="blue-underlined">Number of assets</span> (how many photos you want) <span class="green-note">is optional, but helpful.</span></li>
                     </ul>
                     <span class="next-step">Click Next.</span>
                 </li>
 
-                <li class="instruction" onclick="showImage('05-not-for-photos.png', this)"><span class="blue-underlined">Publication info</span>: <span class="red-warning">Skip it. Not used for photos.</span> <span class="next-step">Click Next.</span></li>
+                <li class="instruction" onclick="showImage('05-pub-date.png', this)"><span class="blue-underlined">Publication date</span>: <span class="red-warning">Required.</span> Make your best guess at when the photo will run, then pick a date a few days after that. We search by this date, so don't leave it on the default. <span class="green-note">The rest of this screen can be skipped.</span> <span class="next-step">Click Next.</span></li>
 
-                <li class="instruction" onclick="showImage('06-venue.png', this)"><span class="blue-underlined">Venue</span>: Address, city, and start and end time of the event. This is very helpful for the photographer. <span class="next-step">Click Next.</span></li>
+                <li class="instruction" onclick="showImage('06-venue.png', this)"><span class="blue-underlined">Venue</span>: Address, city, and start and end time of the event. <span class="red-warning">This is essential for the photographer.</span> <span class="next-step">Click Next.</span></li>
 
                 <li class="instruction" onclick="showImage('07-contact.png', this)"><span class="blue-underlined">Contact</span>: Name, email and cell for the person the photographer is meeting. <span class="next-step">Click Next.</span></li>
 
@@ -99,6 +100,20 @@
                     </ul>
                 </li>
             </ol>
+
+            <hr>
+            <h3>What happens next: Cloud Robot</h3>
+            <p style="font-size:16px">A Slack bot, Cloud Robot, watches every assignment filed to Sean-Allen2.</p>
+            <ul style="font-size:16px">
+                <li><b>Within about five minutes</b> of you clicking Create assignment, your request posts in <b>#spec-photo</b> as <i>Needs a photographer</i>.</li>
+                <li><b>When a photographer is assigned</b>, the full job goes to their own Slack channel, and the #spec-photo post flips to <i>Assigned</i>.</li>
+                <li><b>If you change the assignment in BLOX</b> (time, place, notes), the photographer gets a short notice showing only what changed.</li>
+                <li><b>Every job has a number</b>, like <b>#14</b>, on all its posts.</li>
+                <li><b>Ask it questions</b> in any channel it's in: <code>@Cloud Robot what's Cathie got tomorrow?</code> or <code>@Cloud Robot anything unassigned this week?</code> or <code>@Cloud Robot what's running Friday?</code> (that one uses the publication date) Replies take 10 to 30 seconds.</li>
+                <li><b>Fix a job by its number</b>: <code>@Cloud Robot #14 when: Fri 2-3 p.m.</code> also works for <code>where:</code>, <code>note:</code>, <code>due:</code> and <code>photog:</code>. <span class="red-warning">Change it in BLOX too.</span> BLOX is the record.</li>
+                <li><b>Every evening at 7:55 p.m.</b>, it posts a look-ahead of the next four days, with the weekend counted as one, in #spec-photo, and each photographer gets their own in their channel. Double-bookings are flagged.</li>
+                <li>It only knows what's in BLOX. It never contacts sources, and its answers leave out contact details.</li>
+            </ul>
         </div>
         <div class="col-md-6">
             <div class="image-container fixed-container" id="image-box">
